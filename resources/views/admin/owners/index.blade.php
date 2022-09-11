@@ -23,7 +23,7 @@
                             <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl" _msthash="1608139" _msttexthash="44161" _msthidden="1">名前</th>
                             <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100" _msthash="1608140" _msttexthash="58448" _msthidden="1">メールアドレス</th>
                             <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100" _msthash="1608141" _msttexthash="94432" _msthidden="1">作成日</th>
-                            <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th>
+                            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th>
                           </tr>
                         </thead>
                         <tbody _msthidden="16">
@@ -32,8 +32,8 @@
                             <td class="px-4 py-3" _msthash="1615302" _msttexthash="62374" _msthidden="1">{{ $owner->name }}</td>
                             <td class="px-4 py-3" _msthash="1615303" _msttexthash="46852" _msthidden="1">{{ $owner->email }}</td>
                             <td class="px-4 py-3" _msthash="1615304" _msttexthash="26858" _msthidden="1">{{ $owner->created_at->diffForHumans() }}</td>
-                            <td class="w-10 text-center">
-                              <input name="plan" type="radio">
+                            <td class="px-4 py-3">
+                              <button  onclick="location.href='{{ route('admin.owners.edit', ['owner' => $owner->id ]) }}'" class=" text-white bg-indigo-400 border-0 py-2 px-4 focus:outline-none hover:bg-indigo-500 rounded " _msthash="1322126" _msttexthash="79859" _msthidden="1">編集</button>
                             </td>
                           </tr>
                           @endforeach
