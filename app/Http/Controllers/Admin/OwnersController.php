@@ -5,17 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Owner; // Eloquent エロクアント
-use Illuminate\Support\Facades\DB; //QueryBuilder クエリビルダ
+use Illuminate\Support\Facades\DB; // QueryBuilder クエリビルダ
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 class OwnersController extends Controller
 {
-    
     public function __construct()
     {
         $this->middleware('auth:admin');
-    }
+    } 
 
     public function index()
     {
@@ -38,12 +37,17 @@ class OwnersController extends Controller
         $owners = Owner::select('id', 'name', 'email', 'created_at')
         ->paginate(3);
 
-        return view('admin.owners.index', compact('owners'));
+        return view('admin.owners.index', 
+        compact('owners'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        //
         return view('admin.owners.create');
     }
 
@@ -55,7 +59,7 @@ class OwnersController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->name;
+        //$request->name;
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:owners',
@@ -68,12 +72,10 @@ class OwnersController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        
         return redirect()
         ->route('admin.owners.index')
         ->with(['message' => 'オーナー登録を実施しました。',
         'status' => 'info']);
-
     }
 
     /**
@@ -95,7 +97,6 @@ class OwnersController extends Controller
      */
     public function edit($id)
     {
-        //
         $owner = Owner::findOrFail($id);
         // dd($owner);
         return view('admin.owners.edit', compact('owner'));
@@ -110,7 +111,6 @@ class OwnersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
         $owner = Owner::findOrFail($id);
         $owner->name = $request->name;
         $owner->email = $request->email;
@@ -119,8 +119,8 @@ class OwnersController extends Controller
 
         return redirect()
         ->route('admin.owners.index')
-        ->with(['message' => 'オーナー情報を更新しました。', 
-    'status' => 'info']);
+        ->with(['message' => 'オーナー情報を更新しました。',
+        'status' => 'info']);
     }
 
     /**
@@ -131,12 +131,12 @@ class OwnersController extends Controller
      */
     public function destroy($id)
     {
-        //
-        Owner::findOrFail($id)->delete();  //ソフトデリート
+        Owner::findOrFail($id)->delete(); //ソフトデリート
 
         return redirect()
         ->route('admin.owners.index')
-        ->with(['message' => 'オーナー情報を削除しました。', 'status' => 'alert']);
+        ->with(['message' => 'オーナー情報を削除しました。',
+        'status' => 'alert']);
     }
 
     public function expiredOwnerIndex(){
@@ -148,6 +148,4 @@ class OwnersController extends Controller
         Owner::onlyTrashed()->findOrFail($id)->forceDelete();
         return redirect()->route('admin.expired-owners.index'); 
     }
-
-
 }
