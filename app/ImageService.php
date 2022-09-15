@@ -5,17 +5,22 @@ namespace App;
 use Illuminate\Support\Facades\Storage;
 use InterventionImage;
 
-// use Services\InterventionImage; 使用できなかった。
-
 
 class ImageService
 {
-  public static function upload($imageFile, $folderName){
+  public static function upload($imageFile, $folderName) {
+    // dd($imageFile);
+    if(is_array($imageFile))
+    {
+      $file = $imageFile['image'];
+    } else {
+      $file = $imageFile;
+    }
 
     $fileName = uniqid(rand().'_');
-    $extension = $imageFile->extension();
+    $extension = $file->extension();
     $fileNameToStore = $fileName. '.' . $extension;
-    $resizedImage = InterventionImage::make($imageFile)->resize(1920, 1080)->encode();
+    $resizedImage = InterventionImage::make($file)->resize(1920, 1080)->encode();
     Storage::put('public/' . $folderName . '/' . $fileNameToStore, $resizedImage );
     
     return $fileNameToStore;
