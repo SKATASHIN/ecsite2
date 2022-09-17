@@ -25,9 +25,9 @@ use App\Http\Controllers\Owner\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('owner.welcome');
-});
+// Route::get('/', function () {
+//     return view('owner.welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('owner.dashboard');
@@ -46,12 +46,12 @@ Route::resource('images', ImageController::class)
 Route::resource('products', ProductController::class)
 ->middleware('auth:owners')->except(['show']);
 
-Route::get('/register', [RegisteredUserController::class, 'create'])
-                ->middleware('guest')
-                ->name('register');
+// Route::get('/register', [RegisteredUserController::class, 'create'])
+//                 ->middleware('guest')
+//                 ->name('register');
 
-Route::post('/register', [RegisteredUserController::class, 'store'])
-                ->middleware('guest');
+// Route::post('/register', [RegisteredUserController::class, 'store'])
+//                 ->middleware('guest');
 
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
                 ->middleware('guest')
