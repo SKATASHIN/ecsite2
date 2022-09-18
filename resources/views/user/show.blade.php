@@ -104,7 +104,7 @@
       <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
         <header class="modal__header">
           <h2 class="modal__title class="text-xl text-gray-700" id="modal-1-title">
-            {{ $product->shop->name }}Micromodal
+            {{ $product->shop->name }}
           </h2>
           <button type="button" class="modal__close" aria-label="Close modal" data-micromodal-close></button>
         </header>
