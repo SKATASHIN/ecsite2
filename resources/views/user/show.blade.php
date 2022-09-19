@@ -66,7 +66,7 @@
                         <span class="title-font font-medium text-2xl text-gray-900">{{ number_format($product->price) }}</span><span class="text-gray-700">円（税込み）</span>
                       </div>
                       <form method="post" action="{{ route('user.cart.add') }}">
-                      @csrf
+                        @csrf
                       <div class="flex items-center>
                           <span class="mr-3">数量</span>
                         <div class="relative">
