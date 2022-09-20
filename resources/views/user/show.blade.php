@@ -83,14 +83,12 @@
                     </div>
                   </div>
                 </div>
-                <div class="border-t border-gyay-400 my-8"></div>
-                <div class="mb-4 text-center">この商品を販売しているショップ</div>
-                <div class="mb-4 text-center">この商品を販売しているショップ</div>
-                <div class="mb-4 text-center">この商品を販売しているショップ</div>
-                <div class="mb-4 text-center">{{ $product->shop->name }}</div>
+                <div class="border-t border-gyay-400 my-36"></div>
+                <div class="mb-4 text-center"></div>
+                <div class="mb-4 text-center font-bold ">{{ $product->shop->name }}</div>
                 <div class="mb-4 text-center">
                   @if ($product->shop->filename !== null)
-                    <img class="mx-auto w-40 h-40 object-cover rounded-full" src="{{ asset('storage/shops/' . $product->shop->filename )}}">
+                    <img class="mx-auto w-50 h-40 object-cover rounded-full" src="{{ asset('storage/shops/' . $product->shop->filename )}}">
                   @else
                     <img src="">
                   @endif
