@@ -44,7 +44,7 @@ storage/app/public/productsフォルダ内に 保存すると表示されます�
 
 ショップの画像も表示する場合は、 storage/app/public/shopsフォルダを作成し 画像を保存してください。
 
-##補足
+## 補足
 
 決済のテストとしてstripeを利用しています。 必要な場合は .env にstripeの情報を追記してください。
 
