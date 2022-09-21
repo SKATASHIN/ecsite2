@@ -3,9 +3,13 @@
   ## ダウンロード方法
 
 gitクローン
+
 gitクローン https://github.com/SKATASHIN/ecsite2.git
+
 git clone ブランチを指定してダウンロードする場合
+
 git clone -b  ブランチ名 https://github.com/SKATASHIN/ecsite2.git
+
 もしくはzipファイルでダウンロードしてください
 
  ## インストール方法
