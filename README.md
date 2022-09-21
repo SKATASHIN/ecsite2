@@ -1,6 +1,6 @@
  ## ecsite
 
- ##　ダウンロード方法
+  ## ダウンロード方法
 
 gitクローン
 gitクローン https://github.com/SKATASHIN/ecsite2.git
